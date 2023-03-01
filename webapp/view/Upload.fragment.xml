@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="aemp.guarderia.controller.App" xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified">
+	<Dialog id="upload" type="Standard" title="Carga de archivos">
+		<Panel>
+			<f:SimpleForm>
+				<u:FileUploader id="fileUploader" name="myFileUpload" sameFilenameAllowed="true" tooltip="Seleccion un archivo para subir"
+					change="onBatchUploadLoad" uploadUrl="" uploadComplete="onUploadComplete" uploadAborted="onUploadAbort" useMultipart="false"/>
+			</f:SimpleForm>
+		</Panel>
+		<beginButton>
+			<Button text="Cancelar" press="onUploadCancel"/>
+		</beginButton>
+		<endButton>
+			<Button text="Subir archivo" press="onUploadPress"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

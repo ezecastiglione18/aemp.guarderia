@@ -1,0 +1,15 @@
+{
+	"Hijos": [{
+		"DNI": "87654321",
+		"Hijo": "Maria Perez",
+		"Edad": "18",
+		"amount": "0.00",
+		"currency": "$"
+	},{
+		"DNI": "12345678",
+		"Hijo": "Juan Perez",
+		"Edad": "01",
+		"amount": "0.00",
+		"currency": "$"
+	}]
+}

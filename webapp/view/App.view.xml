@@ -1,0 +1,85 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:semantic="sap.f.semantic" xmlns:form="sap.ui.layout.form" xmlns="sap.m" controllerName="aemp.guarderia.controller.App"
+	displayBlock="true">
+	<App>
+		<Page title="Guarderia" showNavButton="true" navButtonPress="navegarParaAtras">
+			<content>
+				<Panel>
+					<Label text="Mes de imputacion" required="true" labelFor="cbo_mes" class="sapUiSmallMarginEnd"/>
+					<ComboBox id="inp_mes" selectionChange="onChangeMes" items="{ path: 'meses>/Meses' }" class="sapUiSmallMarginEnd" width="25%">
+						<core:ListItem key="{meses>Valor}" text="{meses>Mes}"/>
+					</ComboBox>
+				</Panel>
+				<Panel>
+					<Label text="Año de imputacion" required="true" labelFor="cbo_anio" class="sapUiSmallMarginEnd"/>
+					<DatePicker value="{year}" displayFormat="yyyy" id="inp_anio" class="sapUiSmallMarginEnd" width="25%"/>
+				</Panel>
+				<Panel>
+					<Button text="Mostrar hijos" press="mostrarHijos"/>
+				</Panel>
+				<l:VerticalLayout>
+					<form:SimpleForm width="auto" class="sapUiResponsiveMargin" layout="ResponsiveGridLayout" editable="true" id="newEntitySimpleForm">
+						<form:content>
+							<Table id="tabla_hijos" items="{ path: 'hijos>/Hijos' }" visible="false">
+								<columns>
+									<Column>
+										<Text text="DNI"/>
+									</Column>
+									<Column>
+										<Text text="Hijo"/>
+									</Column>
+									<Column>
+										<Text text="Edad"/>
+									</Column>
+									<Column>
+										<Text text="Presenta comprobante?"/>
+									</Column>
+									<Column>
+										<Text text="Importe de reintegro (en Peso Argentino)"/>
+									</Column>
+									<Column>
+										<Text text="Comprobante"/>
+									</Column>
+									<Column>
+										<Text text=""/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem id="columnListItem" vAlign="Middle">
+										<cells>
+											<Text text="{hijos>DNI}"/>
+											<Text text="{hijos>Hijo}"/>
+											<Text text="{hijos>Edad}"/>
+											<ComboBox id="compr" items="{ path: 'opciones>/Opciones' }">
+												<core:ListItem key="{opciones>Valor}" text="{opciones>Valor}"/>
+											</ComboBox>
+											<!-- {parts: ['currency>/amount', 'currency>/currency'] -->
+											<Input id="valor_compr"
+												value="{ parts: [ {path: 'hijos>amount'}, {path: 'hijos>currency'} ], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"/>
+											<Button icon="sap-icon://show" tooltip="Visualizar comprobante" press="visualizarComprobante" type="Transparent"/>
+											<Button icon="sap-icon://upload" tooltip="Subir comprobante" press="subirArchivo" type="Transparent"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</form:content>
+					</form:SimpleForm>
+					<Panel width="auto">
+						<Label text=""/>
+						<MessageStrip
+							text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet nisl et mauris tincidunt vulputate ut ac urna."
+							type="Information" showIcon="true"></MessageStrip>
+						<Label text=""/>
+						<MessageStrip
+							text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet nisl et mauris tincidunt vulputate ut ac urna."
+							type="Information" showIcon="true"></MessageStrip>
+						<Label text=""/>
+						<MessageStrip
+							text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet nisl et mauris tincidunt vulputate ut ac urna."
+							type="Information" showIcon="true"></MessageStrip>
+					</Panel>
+				</l:VerticalLayout>
+			</content>
+		</Page>
+	</App>
+</mvc:View>
